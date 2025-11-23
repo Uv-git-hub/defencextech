@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NeonGuard — Ultra Modern Cybersecurity</title>
+  <meta name="description" content="NeonGuard — Futuristic cybersecurity, AI-driven monitoring, and 24/7 SOC." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background visual layer -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-neon" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="NeonGuard homepage">
+        <svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#00f5d4"/><stop offset="1" stop-color="#7dd3fc"/></linearGradient></defs><rect rx="8" width="48" height="48" fill="url(#g)"></rect><text x="24" y="32" text-anchor="middle" font-family="Inter, Arial" font-weight="800" font-size="22" fill="#032024">NG</text></svg>
+        <span class="brand-text">NeonGuard</span>
+      </a>
+
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Toggle menu">☰</button>
+        <ul id="nav-list" class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a class="btn-cta" href="#contact">Get a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="main">
+    <!-- HERO -->
+    <section class="hero container" aria-labelledby="hero-heading">
+      <div class="hero-left">
+        <p class="eyebrow">AI · SOC · Zero-Trust</p>
+        <h1 id="hero-heading" class="hero-title">
+          <span id="typed" aria-live="polite"></span>
+          <span class="cursor" aria-hidden="true">█</span>
+        </h1>
+        <p class="hero-sub">Futuristic cybersecurity — real-time threat hunting, automated response, and privacy-by-design pipelines for modern teams.</p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Start free trial</a>
+          <a class="btn ghost" href="#features">See features</a>
+        </div>
+
+        <ul class="stats" aria-hidden="true">
+          <li><strong>24/7</strong><span>SOC</span></li>
+          <li><strong>0.3s</strong><span>avg detection</span></li>
+          <li><strong>99.99%</strong><span>uptime</span></li>
+        </ul>
+      </div>
+
+      <aside class="hero-right" aria-label="Live monitoring preview">
+        <div class="monitor">
+          <div class="monitor-top">
+            <div class="dot green"></div>
+            <div class="dot yellow"></div>
+            <div class="dot red"></div>
+          </div>
+
+          <div class="monitor-body" role="img" aria-label="Simulated threat activity chart">
+            <!-- SVG waves / bars to simulate a neon chart -->
+            <svg viewBox="0 0 600 220" preserveAspectRatio="none" class="chart-svg">
+              <defs>
+                <linearGradient id="lg1" x1="0" x2="1">
+                  <stop offset="0" stop-color="#00f5d4" stop-opacity="0.9"/>
+                  <stop offset="1" stop-color="#7dd3fc" stop-opacity="0.9"/>
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="rgba(3,6,20,0.6)"/>
+              <!-- bars -->
+              <!-- generated rectangles for visual effect -->
+              <g class="bars">
+                <!-- repeated bars -->
+                <rect x="20" y="80" width="18" height="100" rx="6" fill="url(#lg1)"></rect>
+                <rect x="60" y="20" width="18" height="160" rx="6" fill="url(#lg1)"></rect>
+                <rect x="100" y="120" width="18" height="60" rx="6" fill="url(#lg1)"></rect>
+                <rect x="140" y="60" width="18" height="120" rx="6" fill="url(#lg1)"></rect>
+                <rect x="180" y="40" width="18" height="140" rx="6" fill="url(#lg1)"></rect>
+                <rect x="220" y="100" width="18" height="80" rx="6" fill="url(#lg1)"></rect>
+                <rect x="260" y="10" width="18" height="170" rx="6" fill="url(#lg1)"></rect>
+                <rect x="300" y="70" width="18" height="110" rx="6" fill="url(#lg1)"></rect>
+                <rect x="340" y="130" width="18" height="50" rx="6" fill="url(#lg1)"></rect>
+                <rect x="380" y="30" width="18" height="150" rx="6" fill="url(#lg1)"></rect>
+                <rect x="420" y="95" width="18" height="85" rx="6" fill="url(#lg1)"></rect>
+                <rect x="460" y="45" width="18" height="135" rx="6" fill="url(#lg1)"></rect>
+                <rect x="500" y="75" width="18" height="105" rx="6" fill="url(#lg1)"></rect>
+                <rect x="540" y="30" width="18" height="150" rx="6" fill="url(#lg1)"></rect>
+              </g>
+            </svg>
+          </div>
+
+          <div class="monitor-footer">
+            <div class="meta">
+              <span class="m-label">Active threats</span>
+              <span class="m-value">7</span>
+            </div>
+            <div class="meta">
+              <span class="m-label">Avg response</span>
+              <span class="m-value">0.3s</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="section container" aria-labelledby="features-heading">
+      <h2 id="features-heading" class="section-title">Features</h2>
+      <p class="section-sub">Powerful building blocks to secure modern infrastructure.</p>
+
+      <div class="cards">
+        <article class="card" tabindex="0">
+          <div class="icon">🔍</div>
+          <h3>Real-time Threat Detection</h3>
+          <p>Stream-based detection with adaptive ML models and explainable alerts.</p>
+        </article>
+
+        <article class="card" tabindex="0">
+          <div class="icon">🤖</div>
+          <h3>Automated Response</h3>
+          <p>Playbooks + server-side agents to isolate and remediate automatically.</p>
+        </article>
+
+        <article class="card" tabindex="0">
+          <div class="icon">🛡️</div>
+          <h3>Zero-Trust Architecture</h3>
+          <p>Secure micro-segmentation, identity-aware access, least privilege enforcement.</p>
+        </article>
+
+        <article class="card" tabindex="0">
+          <div class="icon">📈</div>
+          <h3>Analytics & Forensics</h3>
+          <p>Rich timelines, session replay, and exportable forensic artifacts.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SOLUTIONS -->
+    <section id="solutions" class="section container" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading" class="section-title">Solutions</h2>
+      <div class="solutions-grid">
+        <div class="solution">
+          <h4>Cloud & Kubernetes</h4>
+          <p>Runtime protection, misconfiguration checks, and image scanning.</p>
+        </div>
+
+        <div class="solution">
+          <h4>IoT & Edge</h4>
+          <p>Lightweight agents and anomaly detection for constrained devices.</p>
+        </div>
+
+        <div class="solution">
+          <h4>Enterprise</h4>
+          <p>SIEM integrations, SOC tooling, SSO, and PCI/HIPAA support.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS / DEMO -->
+    <section id="projects" class="section container" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="section-title">Live Demos</h2>
+      <p class="section-sub">Interactive demos & case studies — see NeonGuard in action.</p>
+
+      <div class="demos">
+        <div class="demo-card">
+          <div class="label">Case Study</div>
+          <h3>Retail Platform — Threat Reduction</h3>
+          <p>Reduced fraud incidents by 64% with custom detection rules and automated quarantines.</p>
+        </div>
+
+        <div class="demo-card">
+          <div class="label">Demo</div>
+          <h3>Cloud Pipeline — Canary Defence</h3>
+          <p>Live telemetry with canary tokens and automated isolation demo.</p>
+        </div>
+
+        <div class="demo-card">
+          <div class="label">Notebook</div>
+          <h3>ML Forensics</h3>
+          <p>Notebook of model explainability for attack attribution workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section container" aria-labelledby="contact-heading">
+      <div class="contact-grid">
+        <div>
+          <h2 id="contact-heading" class="section-title">Contact & Trial</h2>
+          <p class="section-sub">Book a 30-minute demo or start a 14-day trial — no card required.</p>
+
+          <ul class="contact-points">
+            <li><strong>Email</strong><span>hello@neonguard.example</span></li>
+            <li><strong>Phone</strong><span>+971 55 555 5555</span></li>
+            <li><strong>Location</strong><span>Dubai, UAE (UTC+4)</span></li>
+          </ul>
+        </div>
+
+        <form id="contactForm" class="contact-form" novalidate>
+          <label class="visually-hidden" for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="Full name" required>
+
+          <label class="visually-hidden" for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Work email" required>
+
+          <label class="visually-hidden" for="company">Company</label>
+          <input id="company" name="company" type="text" placeholder="Company (optional)">
+
+          <label class="visually-hidden" for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Request demo</button>
+            <button type="button" id="demo-quick" class="btn ghost">Quick demo</button>
+          </div>
+
+          <div id="formStatus" role="status" aria-live="polite" class="form-status" hidden></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="copy">© <span id="year"></span> NeonGuard — Built for the future.</div>
+      <div class="links">
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#contact">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
