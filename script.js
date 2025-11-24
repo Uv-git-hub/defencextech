@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Detect. Defend. Dominate.',
     'AI-driven threat hunting.',
     'Zero-Trust for modern infra.',
-    'NeonGuard — live SOC, always on.'
+    'Defendxtech — live SOC, always on.'
   ];
   const typedEl = document.getElementById('typed');
   let widx = 0, cidx = 0, forward = true;
