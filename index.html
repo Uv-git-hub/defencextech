@@ -59,38 +59,44 @@
 
   <main id="home" class="main">
     <!-- HERO -->
-    <section class="hero container" aria-labelledby="hero-heading" data-aos="fade-up">
+    <section class="hero" aria-labelledby="hero-heading" data-aos="fade-up">
 
+      <!-- Background animation (full-width but only inside hero) -->
       <div id="cyber-bg"></div>
 
-      <div class="hero-left">
-        <p class="eyebrow" data-aos="fade-right" data-aos-delay="200">AI · SOC · Zero-Trust</p>
+      <!-- Hero content container -->
+      <div class="container hero-inner">
 
-        <h1 id="hero-heading" class="hero-title" data-aos="zoom-in" data-aos-delay="300">
-          <span id="typed" aria-live="polite"></span>
-          <span class="cursor" aria-hidden="true">█</span>
-        </h1>
+        <div class="hero-left">
+          <p class="eyebrow" data-aos="fade-right" data-aos-delay="200">AI · SOC · Zero-Trust</p>
 
-        <p class="hero-sub" data-aos="fade-up" data-aos-delay="400">
-          Futuristic cybersecurity — real-time threat hunting, automated response, and
-          privacy-by-design pipelines for modern teams.
-        </p>
+          <h1 id="hero-heading" class="hero-title" data-aos="zoom-in" data-aos-delay="300">
+            <span id="typed" aria-live="polite"></span>
+            <span class="cursor" aria-hidden="true">█</span>
+          </h1>
 
-        <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
-          <a class="btn primary" href="#contact">Start free trial</a>
-          <a class="btn ghost" href="#features">See features</a>
+          <p class="hero-sub" data-aos="fade-up" data-aos-delay="400">
+            Futuristic cybersecurity — real-time threat hunting, automated response, and
+            privacy-by-design pipelines for modern teams.
+          </p>
+
+          <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
+            <a class="btn primary" href="#contact">Start free trial</a>
+            <a class="btn ghost" href="#features">See features</a>
+          </div>
+
+          <ul class="stats" data-aos="fade-up" data-aos-delay="600">
+            <li><strong>24/7</strong><span>SOC</span></li>
+            <li><strong>0.3s</strong><span>avg detection</span></li>
+            <li><strong>99.99%</strong><span>uptime</span></li>
+          </ul>
         </div>
 
-        <ul class="stats" data-aos="fade-up" data-aos-delay="600">
-          <li><strong>24/7</strong><span>SOC</span></li>
-          <li><strong>0.3s</strong><span>avg detection</span></li>
-          <li><strong>99.99%</strong><span>uptime</span></li>
-        </ul>
+        <aside class="hero-right" data-aos="fade-left" data-aos-delay="500"></aside>
+
       </div>
-
-      <aside class="hero-right" data-aos="fade-left" data-aos-delay="500"></aside>
-
     </section>
+
 
 
     <div class="monitor" data-aos="fade-up" data-aos-delay="300">
@@ -286,7 +292,6 @@
   <script src="script.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-  <script src="script.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({
