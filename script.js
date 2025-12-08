@@ -4,10 +4,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Typing effect (non-blocking, accessible)
   const words = [
-    'Detect. Defend. Dominate.',
-    'AI-driven threat hunting.',
-    'Zero-Trust for modern infra.',
-    'Defendxtech — live SOC, always on.'
+    'AI - Artificail intelligence',
+    'SOC',
+    'Zero-Trust',
+    'We automate incident response through AI-driven optimization.'
   ];
   const typedEl = document.getElementById('typed');
   let widx = 0, cidx = 0, forward = true;
