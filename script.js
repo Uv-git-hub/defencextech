@@ -178,12 +178,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 // FAQ toggle
-document.querySelectorAll('.faq-question').forEach(button => {
+document.querySelectorAll('.faq-list .faq-question').forEach(button => {
   button.addEventListener('click', () => {
     const answer = button.nextElementSibling;
-    const isOpen = answer.style.display === 'block';
-    answer.style.display = isOpen ? 'none' : 'block';
-    button.classList.toggle('open', !isOpen);
+    const isOpen = button.classList.contains('open');
+
+    // Close all other FAQs (accordion behavior)
+    document.querySelectorAll('.faq-list .faq-question').forEach(b => {
+      if (b !== button) {
+        b.classList.remove('open');
+        b.nextElementSibling.style.maxHeight = '0';
+        b.nextElementSibling.style.padding = '0 1rem';
+      }
+    });
+
+    // Toggle clicked FAQ
+    if (isOpen) {
+      answer.style.maxHeight = '0';
+      answer.style.padding = '0 1rem';
+      button.classList.remove('open');
+    } else {
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      answer.style.padding = '1rem';
+      button.classList.add('open');
+    }
   });
 });
 
