@@ -572,18 +572,15 @@
                 </ul>
               </div>
 
-              <form id="contactForm" class="contact-form">
-                <input type="text" id="name" placeholder="Full name" required>
-                <input type="email" id="email" placeholder="Work email" required>
-                <input type="text" id="company" placeholder="Company (optional)">
-                <textarea id="message" placeholder="How can we help?" rows="4"></textarea>
-
-                <div class="form-actions">
-                  <button type="submit" class="btn primary">Submit</button>
-                  <button type="button" class="btn ghost">Reset</button>
-                </div>
-                <p id="status"></p>
+              <form id="contactForm" action="https://formspree.io/f/manrdpoy" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="company" placeholder="Company">
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+                <div id="formStatus" hidden></div>
               </form>
+
             </div>
           </div>
         </section>
