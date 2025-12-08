@@ -104,46 +104,89 @@ VANTA.NET({
   maxDistance: 22.00,
   spacing: 18.00
 });
-document.getElementById('contactForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
-  
-  const form = this;
-  const formStatus = document.getElementById('formStatus');
+// Initialize EmailJS (only once)
+emailjs.init("VyRhlL2B9IHuDr05g"); // replace with your actual public key from EmailJS dashboard
 
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const message = form.message.value.trim();
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = this.name.value.trim();
+  const email = this.email.value.trim();
+  const message = this.message.value.trim();
+  const formStatus = document.getElementById('formStatus');
 
   if (!name || !email || !message) {
     formStatus.hidden = false;
-    formStatus.textContent = 'Please fill all required fields.';
-    formStatus.style.color = '#ff8a8a';
+    formStatus.textContent = "Please fill all required fields.";
+    formStatus.style.color = "#ff8a8a";
     return;
   }
 
-  formStatus.hidden = false;
-  formStatus.textContent = 'Sending…';
-  formStatus.style.color = '#3ec4c8';
-
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(form)
-    });
-
-    if (response.ok) {
-      formStatus.textContent = 'Thanks — your message has been sent!';
-      formStatus.style.color = '#3ec4c8';
-      form.reset();
-    } else {
-      const data = await response.json();
-      formStatus.textContent = data?.errors?.[0]?.message || 'Oops! Something went wrong.';
-      formStatus.style.color = '#ff8a8a';
+  // Send email using EmailJS
+  emailjs.send(
+    "service_ju237q5",        // <-- Your Service ID
+    "template_23rgigx",       // <-- Replace with your Template ID from EmailJS
+    {
+      from_name: name,
+      from_email: email,
+      message: message
     }
-  } catch (err) {
-    formStatus.textContent = 'Server error. Try again later.';
-    formStatus.style.color = '#ff8a8a';
+  ).then(() => {
+    formStatus.hidden = false;
+    formStatus.textContent = "Thanks — your message has been sent!";
+    formStatus.style.color = "#3ec4c8";
+    document.getElementById('contactForm').reset();
+  }).catch((err) => {
+    formStatus.hidden = false;
+    formStatus.textContent = "Oops! Something went wrong. Try again.";
+    formStatus.style.color = "#ff8a8a";
     console.error(err);
-  }
+  });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  const formStatus = document.getElementById('status');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const company = form.company.value.trim();
+    const message = form.message.value.trim();
+
+    if (!name || !email || !message) {
+      formStatus.hidden = false;
+      formStatus.textContent = 'Please fill all required fields.';
+      formStatus.style.color = '#ff8a8a';
+      return;
+    }
+
+    formStatus.hidden = false;
+    formStatus.textContent = 'Sending…';
+    formStatus.style.color = '#3ec4c8';
+
+    try {
+      const res = await fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, company, message })
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        formStatus.textContent = 'Thanks — your message has been sent!';
+        form.reset();
+      } else {
+        formStatus.textContent = 'Oops! Something went wrong. Try again.';
+        formStatus.style.color = '#ff8a8a';
+      }
+    } catch (err) {
+      formStatus.textContent = 'Server error. Try again later.';
+      formStatus.style.color = '#ff8a8a';
+      console.error(err);
+    }
+  });
+});
+
