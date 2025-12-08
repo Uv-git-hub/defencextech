@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Typing effect (non-blocking, accessible)
   const words = [
-    'SOC - We automate incident response through AI-driven optimization.',
+    'We automate incident response through AI-driven optimization.',
     
   ];
   const typedEl = document.getElementById('typed');
