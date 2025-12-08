@@ -28,25 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile nav toggle
   const navToggle = document.getElementById('nav-toggle');
   const navList = document.getElementById('nav-list');
+
   navToggle.addEventListener('click', () => {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', String(!expanded));
-    if (!expanded) {
-      navList.style.display = 'flex';
-      navList.style.flexDirection = 'column';
-      navList.style.position = 'absolute';
-      navList.style.top = '64px';
-      navList.style.right = '28px';
-      navList.style.background = 'rgba(3,6,20,0.9)';
-      navList.style.padding = '12px';
-      navList.style.borderRadius = '10px';
-      navList.style.boxShadow = '0 10px 30px rgba(0,0,0,0.6)';
-    } else {
-      navList.style.display = '';
-      navList.style.position = '';
-      navList.style.top = '';
-    }
+    navList.classList.toggle('active'); // toggle the new CSS class
   });
+
 
   // Contact form (demo only — no backend)
   const form = document.getElementById('contactForm');
