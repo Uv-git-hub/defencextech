@@ -320,7 +320,7 @@ body {
 }
 
 .section-eyebrow {
-  color: var(--accent-color);
+  color: #3ec4c8;
   font-weight: 600;
   font-size: 0.875rem;
   text-transform: uppercase;
