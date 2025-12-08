@@ -4,7 +4,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Typing effect (non-blocking, accessible)
   const words = [
-    'AI - Artificail intelligence',
     'SOC',
     'We automate incident response through AI-driven optimization.'
   ];
