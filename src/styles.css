@@ -1,3 +1,18 @@
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
 :root {
   --primary: #4ED0F8;
   --primary-dark: #2BB0D8;
@@ -350,10 +365,6 @@ body {
   color: var(--primary);
 }
 
-.cta-banner .btn {
-  text-decoration: none;
-}
-
 /* Benefits Grid */
 .benefits-grid {
   display: grid;
@@ -457,7 +468,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Industry Section (UPDATED) */
+/* Industry Section */
 .industry-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -465,39 +476,203 @@ body {
   margin-top: 3rem;
 }
 
-.industry-card {
-  background: rgba(26, 26, 46, 0.5);
-  /* fallback if image fails */
-  /* UPDATED */
-  border-radius: 12px;
-  overflow: hidden;
-  /* UPDATED: ensure image & content stay inside rounded corners */
-  border: 1px solid rgba(78, 208, 248, 0.1);
-  transition: all 0.3s;
+.industry-image {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
 }
 
-.industry-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--glow);
+.industry-image.manufacturing {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.industry-image.education {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.industry-image.government {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.industry-image.healthcare {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.industry-image.finance {
+  background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+}
+
+.industry-image.retail {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
 }
 
 .industry-card h3 {
-  padding: 1rem 1rem 0.5rem 1rem;
+  padding: 1.5rem;
   color: var(--primary);
 }
 
 .industry-card p {
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 1.5rem 1.5rem;
   color: var(--gray);
 }
 
-.industry-image {
-  /* ADDED */
+.quote {
+  background: rgba(78, 208, 248, 0.1);
+  padding: 2rem;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  margin: 2rem 0;
+  font-style: italic;
+}
+
+/* Testimonials */
+.testimonials-slider {
+  margin-top: 3rem;
+}
+
+.testimonial-card {
+  background: rgba(26, 26, 46, 0.5);
+  padding: 3rem;
+  border-radius: 12px;
+  border: 1px solid rgba(78, 208, 248, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote-icon {
+  font-size: 4rem;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.testimonial-card .author {
+  color: var(--gray);
+  font-style: italic;
+  margin-top: 1.5rem;
+}
+
+/* FAQ Section */
+.faq-list {
+  margin-top: 3rem;
+  max-width: 900px;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(78, 208, 248, 0.1);
+  margin-bottom: 1rem;
+}
+
+.faq-question {
   width: 100%;
-  display: block;
-  object-fit: cover;
-  height: 200px;
-  /* or adjust as needed */
+  background: none;
+  border: none;
+  color: var(--white);
+  padding: 1.5rem 0;
+  text-align: left;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.faq-question:hover {
+  color: var(--primary);
+}
+
+.faq-icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+  color: var(--primary);
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(90deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  color: var(--gray);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  padding-bottom: 1.5rem;
+}
+
+/* Contact Section */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+.contact-points {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.contact-points li {
+  padding: 1rem 0;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.contact-points li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem;
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid rgba(78, 208, 248, 0.1);
+  border-radius: 8px;
+  color: var(--white);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--gray);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+#status {
+  color: var(--primary);
+  font-weight: 600;
 }
 
 /* Footer */
@@ -567,8 +742,6 @@ body {
 .footer-bottom a:hover {
   color: var(--primary);
 }
-
-
 
 /* Chatbot Styles */
 #chatbot-container {
@@ -773,34 +946,250 @@ body {
   }
 }
 
+/* ======================== */
+/* MOBILE RESPONSIVE FIXES */
+/* ======================== */
+@media (max-width: 768px) {
+
+  /* HERO SECTION */
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+  }
+
+  .hero-left h1 {
+    font-size: 28px !important;
+    line-height: 38px !important;
+  }
+
+  /* NAVBAR */
+  .nav-list {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #000;
+    display: none;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .nav-list.active {
+    display: block;
+  }
+
+  .nav-list li {
+    margin: 12px 0;
+  }
+
+  /* SECTION TITLE FIX */
+  .section-title {
+    font-size: 24px !important;
+    line-height: 32px !important;
+    text-align: center;
+  }
+
+  /* CARDS IN 1 COLUMN */
+  .service-card,
+  .feature-card {
+    width: 100% !important;
+    margin: 10px 0 !important;
+  }
+
+  /* FAQ */
+  .faq-item {
+    width: 100% !important;
+  }
+
+  /* CONTACT FORM */
+  form input,
+  form textarea {
+    width: 100% !important;
+  }
+
+  .contact-section {
+    padding: 40px 15px !important;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center !important;
+  }
+}
+
+/* ---------- mobile fixes & overlay nav ---------- */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ensure media fits */
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* overlay mobile nav */
+.nav-toggle {
+  display: none;
+  /* default hidden, shown at breakpoint */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  align-items: center;
+}
+
+.nav-toggle .bar {
+  width: 24px;
+  height: 3px;
+  background: var(--primary);
+  margin: 4px 0;
+  display: block;
+  border-radius: 2px;
+}
+
+/* mobile overlay - hidden by default */
+.nav-list {
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+/* responsive rules */
+@media (max-width: 968px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    background: rgba(15, 15, 30, 0.98);
+    padding: 4.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    z-index: 2000;
+    overflow-y: auto;
+  }
+
+  .nav-list.active {
+    transform: translateX(0);
+  }
+
+  .nav-list a {
+    font-size: 1.1rem;
+    padding: 12px 0;
+  }
+
+  .nav .btn-cta {
+    display: none;
+  }
+
+  /* hide CTA since it's in overlay */
+}
+
+/* hero adjustments on small screens */
+@media (max-width: 768px) {
+  .hero {
+    padding: 2.2rem 0;
+    min-height: 60vh;
+    align-items: flex-start;
+  }
+
+  .hero-inner {
+    padding: 0 12px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 7vw, 2.8rem);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* hide background canvas for small devices (optional) */
+  #networkCanvas {
+    display: none;
+  }
+}
+
+/* ensure contact form full width on mobile */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+  }
+}
+
+/* optional: reduce dropdown hover effect on mobile */
+@media (hover: none) {
+  .dropdown:hover .dropdown-menu {
+    display: none;
+  }
+
+  .dropdown .dropdown-toggle {
+    display: inline-block;
+  }
+}
+
 .industry-card {
-  background: #0e1422;
-  padding: 20px;
   border-radius: 16px;
+  overflow: hidden;
+  /* ensures image stays within card */
   text-align: left;
   transition: 0.3s ease;
+  border: 1px solid rgba(78, 208, 248, 0.1);
+  background: none;
+  /* remove any previous color */
 }
 
 .industry-card:hover {
   transform: translateY(-5px);
+  box-shadow: var(--glow);
 }
 
 .industry-image {
   width: 100%;
   height: 200px;
   /* adjust as needed */
-  border-radius: 12px 12px 0 0;
-  /* top corners rounded */
   overflow: hidden;
-  object-fit: cover;
-  /* ensures image covers the div without stretching */
-  display: block;
 }
 
-/* If you use <img> inside .industry-image */
 .industry-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* makes image fill the container */
   display: block;
 }
