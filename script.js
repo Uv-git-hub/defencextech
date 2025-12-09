@@ -1,6 +1,11 @@
-// script.js — save in same folder and referenced by index.html
-// Handles: typed hero text, mobile nav toggle, contact form demo behavior
+// Initialize EmailJS
+(function() {
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init("VyRhlL2B9IHuDr05g");
+  }
+})();
 
+// Typing effect
 document.addEventListener('DOMContentLoaded', () => {
   // Typing effect (non-blocking, accessible)
   const words = [
@@ -24,206 +29,202 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(tick, forward ? 60 : 28);
   }
   tick();
+});
 
-  // Mobile nav toggle
-  const navToggle = document.getElementById('nav-toggle');
-  const navList = document.getElementById('nav-list');
+// Network Animation Canvas
+const canvas = document.getElementById('networkCanvas');
+const ctx = canvas?.getContext('2d');
 
-  navToggle.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', String(!expanded));
-    navList.classList.toggle('active'); // toggle the new CSS class
-  });
+if (canvas && ctx) {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
+  const particles = [];
+  const particleCount = 50;
 
-  // Contact form (demo only — no backend)
-  const form = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // Basic client-side validation
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-    if (!name || !email || !message) {
-      showStatus('Please fill all required fields.', true);
-      return;
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.5;
+      this.vy = (Math.random() - 0.5) * 0.5;
+      this.radius = 2;
     }
 
-    showStatus('Submitting…');
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
 
-    // Simulate async send
-    setTimeout(() => {
-      // Reset form
-      form.reset();
-      showStatus('Thanks — your demo request has been received. We will contact you within 24 hours.');
-    }, 900);
-  });
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
 
-  document.getElementById('demo-quick').addEventListener('click', () => {
-    showStatus('Launching quick demo… (this is a static template).');
-    setTimeout(() => showStatus('Demo ready. Check the Live Demos section.'), 900);
-  });
-
-  function showStatus(msg, isError = false) {
-    formStatus.hidden = false;
-    formStatus.textContent = msg;
-    formStatus.style.color = isError ? '#ff8a8a' : '';
-    // hide after 6s
-    clearTimeout(showStatus._t);
-    showStatus._t = setTimeout(() => { formStatus.hidden = true; }, 6000);
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(78, 208, 248, 0.5)';
+      ctx.fill();
+    }
   }
 
-  // footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
-});
-VANTA.NET({
-  el: "#cyber-bg",
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  scale: 1.00,
-  scaleMobile: 1.00,
-  color: 0x00fff0,
-  backgroundColor: 0x00000A,
-  points: 12.00,
-  maxDistance: 22.00,
-  spacing: 18.00
-});
-// Initialize EmailJS (only once)
-emailjs.init("VyRhlL2B9IHuDr05g"); // replace with your actual public key from EmailJS dashboard
-
-document.getElementById('contactForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const name = this.name.value.trim();
-  const email = this.email.value.trim();
-  const message = this.message.value.trim();
-  const formStatus = document.getElementById('formStatus');
-
-  if (!name || !email || !message) {
-    formStatus.hidden = false;
-    formStatus.textContent = "Please fill all required fields.";
-    formStatus.style.color = "#ff8a8a";
-    return;
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
   }
 
-  // Send email using EmailJS
-  emailjs.send(
-    "service_ju237q5",        // <-- Your Service ID
-    "template_23rgigx",       // <-- Replace with your Template ID from EmailJS
-    {
-      from_name: name,
-      from_email: email,
-      message: message
-    }
-  ).then(() => {
-    formStatus.hidden = false;
-    formStatus.textContent = "Thanks — your message has been sent!";
-    formStatus.style.color = "#3ec4c8";
-    document.getElementById('contactForm').reset();
-  }).catch((err) => {
-    formStatus.hidden = false;
-    formStatus.textContent = "Oops! Something went wrong. Try again.";
-    formStatus.style.color = "#ff8a8a";
-    console.error(err);
-  });
-});
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contactForm');
-  const formStatus = document.getElementById('status');
+    particles.forEach(particle => {
+      particle.update();
+      particle.draw();
+    });
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    // Draw connections
+    particles.forEach((p1, i) => {
+      particles.slice(i + 1).forEach(p2 => {
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
 
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const company = form.company.value.trim();
-    const message = form.message.value.trim();
-
-    if (!name || !email || !message) {
-      formStatus.hidden = false;
-      formStatus.textContent = 'Please fill all required fields.';
-      formStatus.style.color = '#ff8a8a';
-      return;
-    }
-
-    formStatus.hidden = false;
-    formStatus.textContent = 'Sending…';
-    formStatus.style.color = '#3ec4c8';
-
-    try {
-      const res = await fetch('/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, company, message })
+        if (distance < 150) {
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(78, 208, 248, ${0.2 * (1 - distance / 150)})`;
+          ctx.stroke();
+        }
       });
+    });
 
-      const data = await res.json();
-      if (data.success) {
-        formStatus.textContent = 'Thanks — your message has been sent!';
-        form.reset();
-      } else {
-        formStatus.textContent = 'Oops! Something went wrong. Try again.';
-        formStatus.style.color = '#ff8a8a';
-      }
-    } catch (err) {
-      formStatus.textContent = 'Server error. Try again later.';
-      formStatus.style.color = '#ff8a8a';
-      console.error(err);
-    }
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   });
-});
-// FAQ toggle
-document.querySelectorAll('.faq-list .faq-question').forEach(button => {
-  button.addEventListener('click', () => {
-    const answer = button.nextElementSibling;
-    const isOpen = button.classList.contains('open');
+}
 
-    // Close all other FAQs (accordion behavior)
-    document.querySelectorAll('.faq-list .faq-question').forEach(b => {
-      if (b !== button) {
-        b.classList.remove('open');
-        b.nextElementSibling.style.maxHeight = '0';
-        b.nextElementSibling.style.padding = '0 1rem';
+// Mobile Navigation Toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navList = document.querySelector('.nav-list');
+
+if (navToggle && navList) {
+  navToggle.addEventListener('click', () => {
+    navList.classList.toggle('active');
+    const isExpanded = navList.classList.contains('active');
+    navToggle.setAttribute('aria-expanded', isExpanded);
+  });
+}
+
+// FAQ Toggle Functionality
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+
+  question.addEventListener('click', () => {
+    // Close all other FAQ items
+    faqItems.forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove('active');
       }
     });
 
-    // Toggle clicked FAQ
-    if (isOpen) {
-      answer.style.maxHeight = '0';
-      answer.style.padding = '0 1rem';
-      button.classList.remove('open');
-    } else {
-      answer.style.maxHeight = answer.scrollHeight + 'px';
-      answer.style.padding = '1rem';
-      button.classList.add('open');
-    }
+    // Toggle current item
+    item.classList.toggle('active');
   });
 });
-document.querySelectorAll('.faq-question').forEach(button => {
-  button.addEventListener('click', () => {
-    const answer = button.nextElementSibling;
-    const isOpen = button.classList.contains('open');
 
-    // Close all other FAQ items (optional accordion behavior)
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      if (btn !== button) {
-        btn.classList.remove('open');
-        btn.nextElementSibling.style.maxHeight = null;
+// Smooth Scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href !== '#' && href !== '') {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        // Close mobile menu if open
+        if (navList) {
+          navList.classList.remove('active');
+        }
       }
-    });
-
-    if (isOpen) {
-      button.classList.remove('open');
-      answer.style.maxHeight = null;
-    } else {
-      button.classList.add('open');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
     }
   });
 });
 
+// Contact Form Handling with EmailJS
+const contactForm = document.getElementById('contactForm');
+const statusMessage = document.getElementById('status');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const companyInput = document.getElementById('company');
+    const messageInput = document.getElementById('message');
+
+    // Show loading state
+    statusMessage.textContent = 'Sending...';
+    statusMessage.style.color = '#4ED0F8';
+
+    // Prepare template parameters
+    const templateParams = {
+      from_name: nameInput.value,
+      from_email: emailInput.value,
+      company: companyInput.value || 'Not provided',
+      message: messageInput.value,
+      to_email: 'b.pandey@defendxtech.com'
+    };
+
+    // Send email using EmailJS
+    emailjs.send('service_x5t0hq6', 'template_j8kspag', templateParams)
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        statusMessage.textContent = 'Message sent successfully! We will get back to you soon.';
+        statusMessage.style.color = '#4ED0F8';
+
+        // Reset form
+        contactForm.reset();
+
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          statusMessage.textContent = '';
+        }, 5000);
+      }, function(error) {
+        console.log('FAILED...', error);
+        statusMessage.textContent = 'Failed to send message. Please try again or email us directly.';
+        statusMessage.style.color = '#f5576c';
+
+        // Clear error message after 5 seconds
+        setTimeout(() => {
+          statusMessage.textContent = '';
+        }, 5000);
+      });
+  });
+
+  // Reset button functionality
+  const resetBtn = contactForm.querySelector('.btn.ghost');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function() {
+      contactForm.reset();
+      statusMessage.textContent = '';
+    });
+  }
+}
+
+// Update year in footer
+const yearSpan = document.getElementById('year');
+if (yearSpan) {
+  yearSpan.textContent = new Date().getFullYear();
+}
+
+// All sections visible by default - no fade animation issues

@@ -1,15 +1,14 @@
 {
   "name": "defendxtech-website",
   "version": "1.0.0",
-  "description": "DefendXTech Cybersecurity Website",
-  "type": "module",
+  "description": "Defendxtech - AI-Powered Cybersecurity Solutions",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "^5.0.0",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "typescript": "^5.3.3"
   }
 }
