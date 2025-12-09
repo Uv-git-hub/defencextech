@@ -14,47 +14,47 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html">
-
-        <!-- PASTE NEW LOGO HERE -->
-        <svg class="brand-icon" width="48" height="48" viewBox="0 0 200 200" fill="none">
+      <a class="brand" href="#home" aria-label="Defendxtech home">
+        <!-- Logo -->
+        <svg class="brand-icon" width="48" height="48" viewBox="0 0 200 200" fill="none" role="img" aria-hidden="true">
           <path d="M100 10 L180 55 L180 145 L100 190 L20 145 L20 55 Z" stroke="#4ED0F8" stroke-width="10" fill="none" />
           <path d="M70 85 L100 65 L130 85" stroke="#4ED0F8" stroke-width="10" fill="none" stroke-linecap="round" />
           <path d="M70 115 L100 135 L130 115" stroke="#4ED0F8" stroke-width="10" fill="none" stroke-linecap="round" />
           <text x="100" y="110" font-size="48" font-weight="700" text-anchor="middle" fill="white">DxT</text>
         </svg>
         <span class="brand-text">Defendxtech</span>
-
       </a>
 
-      <nav class="nav">
-        <button id="nav-toggle" class="nav-toggle">☰</button>
-        <ul id="nav-list" class="nav-list">
-          <li><a href="index.html#home">Home</a></li>
-          <li class="dropdown">
-            <a href="index.html#services">Services</a>
-            <ul class="dropdown-menu">
-              <li><a href="index.html#managed">Managed Services</a></li>
-              <li><a href="index.html#professional">Professional Services</a></li>
-              <li><a href="index.html#assessment">Assessment Services</a></li>
-              <li><a href="index.html#expertise">Expertise</a></li>
-            </ul>
-          </li>
-          <li><a href="index.html#solutions">Solutions</a></li>
-          <li><a href="index.html#industries">Industries</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-        <a class="btn-cta" href="index.html#contact">Talk to us</a>
+      <nav class="nav" aria-label="Main navigation">
+        <!-- single toggle button -->
         <button id="nav-toggle" class="nav-toggle" aria-label="Open navigation" aria-expanded="false">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
 
+        <ul id="nav-list" class="nav-list" role="menu">
+          <li role="none"><a role="menuitem" href="#home">Home</a></li>
+          <li class="dropdown" role="none">
+            <a role="menuitem" href="#services">Services</a>
+            <ul class="dropdown-menu" aria-label="Services submenu">
+              <li><a href="#managed">Managed Services</a></li>
+              <li><a href="#professional">Professional Services</a></li>
+              <li><a href="#assessment">Assessment Services</a></li>
+              <li><a href="#expertise">Expertise</a></li>
+            </ul>
+          </li>
+          <li role="none"><a role="menuitem" href="#solutions">Solutions</a></li>
+          <li role="none"><a role="menuitem" href="#industries">Industries</a></li>
+          <li role="none"><a role="menuitem" href="#about">About</a></li>
+          <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
+        </ul>
+
+        <a class="btn-cta" href="#contact">Talk to us</a>
       </nav>
     </div>
   </header>
+
 
   <!-- Canvas for network animation -->
   <canvas id="networkCanvas"></canvas>
@@ -68,10 +68,9 @@
           <h1 class="hero-title">
             <span id="typed">Securing the Future — Intelligently</span>
           </h1>
-          <h2>Securing the Future — Intelligently</h2>
           <p class="hero-sub">
-            Harness the power of AI for real‑time threat hunting, instant automated response, and seamless privacy
-            integration across your digital ecosystem.
+            Harness the power of AI for real-time threat hunting, instant automated response, and seamless privacy
+            integration across your digital ecosystem.
           </p>
           <div class="hero-actions">
             <a class="btn primary" href="#contact">Talk to us</a>
@@ -85,6 +84,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- About Section -->
     <section id="about" class="section about-section">
@@ -430,37 +430,42 @@
 
             <div class="industry-grid">
               <div class="industry-card">
-                <div class="industry-image manufacturing"></div>
+                <div class="industry-icon"></div>
+                <img src="https://cdn.pixabay.com/photo/2025/03/12/14/45/technology-9465523_1280.jpg" alt="Manufacturing Industry">
                 <h3>Manufacturing</h3>
                 <p>Safeguarding industrial systems and IoT devices for secure operations.</p>
               </div>
 
               <div class="industry-card">
-                <div class="industry-image education"></div>
+                <div class="industry-icon"></div>
+                <img src="https://cdn.pixabay.com/photo/2024/05/27/04/48/futuristic-8790074_1280.png"alt="Healthcare Security">
                 <h3>Education</h3>
                 <p>Secure data protection and online learning platforms for uninterrupted education.</p>
               </div>
 
               <div class="industry-card">
-                <div class="industry-image government"></div>
+                <div class="industry-icon"></div>
                 <h3>Government</h3>
                 <p>High-level defense to secure national and citizen data from cyber threats.</p>
               </div>
 
               <div class="industry-card">
-                <div class="industry-image healthcare"></div>
+                <div class="industry-icon"></div>
+                <img src="https://cdn.pixabay.com/photo/2018/05/31/10/51/cyber-security-3443628_1280.jpg"alt="Healthcare">
                 <h3>Healthcare</h3>
                 <p>Protecting sensitive patient data and ensuring HIPAA compliance.</p>
               </div>
 
               <div class="industry-card">
-                <div class="industry-image finance"></div>
+                <div class="industry-icon"></div>
+                <img src="https://cdn.pixabay.com/photo/2022/10/18/02/09/credit-card-7529025_1280.png"alt="Finance">
                 <h3>Finance</h3>
                 <p>Securing financial transactions and protecting against fraud.</p>
               </div>
 
               <div class="industry-card">
-                <div class="industry-image retail"></div>
+                <div class="industry-icon"></div>
+                <img src="https://cdn.pixabay.com/photo/2024/10/14/21/00/ai-generated-9120851_1280.jpg"alt"Retail">
                 <h3>Retail</h3>
                 <p>Safeguarding customer data and payment information.</p>
               </div>
