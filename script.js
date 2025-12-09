@@ -1,20 +1,44 @@
 // Initialize EmailJS
-(function() {
+(function () {
   if (typeof emailjs !== 'undefined') {
     emailjs.init("VyRhlL2B9IHuDr05g");
   }
 })();
 
-// Typing effect
 document.addEventListener('DOMContentLoaded', () => {
-  // Typing effect (non-blocking, accessible)
+
+  /* -------------------------------------------
+     TYPING EFFECT
+  -------------------------------------------- */
   const words = [
     'We automate incident response through AI-driven optimization.',
-
   ];
+
   const typedEl = document.getElementById('typed');
   let widx = 0, cidx = 0, forward = true;
 
+  function tick() {
+    const word = words[widx];
+
+    if (forward) {
+      cidx++;
+      typedEl.textContent = word.slice(0, cidx);
+      if (cidx === word.length) {
+        forward = false;
+        return setTimeout(tick, 1200);
+      }
+    } else {
+      cidx--;
+      typedEl.textContent = word.slice(0, cidx);
+      if (cidx === 0) {
+        forward = true;
+        widx = (widx + 1) % words.length;
+      }
+    }
+
+    setTimeout(tick, forward ? 60 : 28);
+  }
+  tick();
   function tick() {
     const word = words[widx];
     if (forward) {
@@ -164,7 +188,7 @@ const contactForm = document.getElementById('contactForm');
 const statusMessage = document.getElementById('status');
 
 if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
+  contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
     const nameInput = document.getElementById('name');
@@ -187,7 +211,7 @@ if (contactForm) {
 
     // Send email using EmailJS
     emailjs.send('service_x5t0hq6', 'template_j8kspag', templateParams)
-      .then(function(response) {
+      .then(function (response) {
         console.log('SUCCESS!', response.status, response.text);
         statusMessage.textContent = 'Message sent successfully! We will get back to you soon.';
         statusMessage.style.color = '#4ED0F8';
@@ -199,7 +223,7 @@ if (contactForm) {
         setTimeout(() => {
           statusMessage.textContent = '';
         }, 5000);
-      }, function(error) {
+      }, function (error) {
         console.log('FAILED...', error);
         statusMessage.textContent = 'Failed to send message. Please try again or email us directly.';
         statusMessage.style.color = '#f5576c';
@@ -214,7 +238,7 @@ if (contactForm) {
   // Reset button functionality
   const resetBtn = contactForm.querySelector('.btn.ghost');
   if (resetBtn) {
-    resetBtn.addEventListener('click', function() {
+    resetBtn.addEventListener('click', function () {
       contactForm.reset();
       statusMessage.textContent = '';
     });
